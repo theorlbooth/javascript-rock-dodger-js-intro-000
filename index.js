@@ -64,13 +64,13 @@ function endGame() {
 }
 
 function moveDodger(e) {
-  document.addEventListener("keydown", function(e) {
-    if(e.which == 37) {
-      moveDodgerLeft()
-    } else if(e.which == 39) {
-      moveDodgerRight()
-    }
-  })
+  var act = {37: moveDodgerLeft, 38: moveDodgerRight};
+  if (e.which == 37 || e.which == 39) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.which == 37 ? moveDodgerLeft() : false;
+    e.which == 39 ? moveDodgerRight() : false;
+  }
 }
 
 function moveDodgerLeft() {
