@@ -49,12 +49,6 @@ function createRock(x) {
   return rock
 }
 
-/**
- * End the game by clearing `gameInterval`,
- * removing all ROCKS from the DOM,
- * and removing the `moveDodger` event listener.
- * Finally, alert "YOU LOSE!" to the player.
- */
 function endGame() {
   gameInterval = 0
   ROCKS = []
@@ -71,30 +65,23 @@ function moveDodger(e) {
     }
   })
 }
-  // implement me!
-  /**
-   * This function should call `moveDodgerLeft()`
-   * if the left arrow is pressed and `moveDodgerRight()`
-   * if the right arrow is pressed. (Check the constants
-   * we've declared for you above.)
-   * And be sure to use the functions declared below!
-   */
-}
 
 function moveDodgerLeft() {
-  // implement me!
-  /**
-   * This function should move DODGER to the left
-   * (mabye 4 pixels?). Use window.requestAnimationFrame()!
-   */
+  var leftNumbers = dodger.style.left.replace("px", "")
+  var left = parseInt(leftNumbers, 10)
+
+  if(left > 0) {
+    dodger.style.left = `${left - 4}px`  
+  }
 }
 
 function moveDodgerRight() {
-  // implement me!
-  /**
-   * This function should move DODGER to the right
-   * (mabye 4 pixels?). Use window.requestAnimationFrame()!
-   */
+  var leftNumbers = dodger.style.left.replace("px", "")
+  var left = parseInt(leftNumbers, 10)
+
+  if(left < 360) {
+    dodger.style.left = `${left + 4}px`
+  }
 }
 
 /**
