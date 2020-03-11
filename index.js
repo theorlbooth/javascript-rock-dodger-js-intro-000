@@ -38,7 +38,7 @@ function createRock(x) {
 
   function moveRock() {
     rock.style.top = `${top += 2}px`
-    if(checkCollision() === true {
+    if(checkCollision(rock)) {
       endGame()
     } else if(rockLeftEdge > "0px") {
       function step() {
