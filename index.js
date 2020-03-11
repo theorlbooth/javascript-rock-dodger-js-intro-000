@@ -40,32 +40,34 @@ function createRock(x) {
     rock.style.top = `${top += 2}px`
     if(checkCollision(rock)) {
       endGame()
-    } else if(rockLeftEdge > "0px") {
-      function step() {
-        rock.style.top = `${top -= 2}px`
-        if (top < 400) {
-          window.requestAnimationFrame(step)
-        }}
-    } else if(rockLeftEdge === "0px") {
+    } 
+    if(top <= GAME_HEIGHT) {
       rock.remove()
+    } else {
+      window.requestAnimationFrame(moveRock)
     }
   }
+
+  window.requestAnimationFrame(moveRock)
+
   ROCKS.push(rock)
   return rock
 }
 
 function endGame() {
-  gameInterval = 0
-  ROCKS = []
-  moveDodger.remove()
+  window.clearInterval(gameInterval)
+  ROCKS.forEach(function(rock){
+    rock.remove()
+  })
+  document.removeEventListener("keydown", moveDodger)
   alert("YOU LOSE!")
 }
 
 function moveDodger(e) {
   document.addEventListener("keydown", function(e) {
-    if(e.which === 37) {
+    if(e.which == 37) {
       moveDodgerLeft()
-    } else if(e.which === 39) {
+    } else if(e.which == 39) {
       moveDodgerRight()
     }
   })
